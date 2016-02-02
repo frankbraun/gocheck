@@ -23,10 +23,11 @@ func (e *excludePaths) String() string     { return fmt.Sprint(*e) }
 func (e *excludePaths) Set(v string) error { *e = append(*e, v); return nil }
 
 func init() {
+	exclude = []string{"vendor"}
 	flag.BoolVar(&coverage, "c", false, "enable coverage analysis")
 	flag.BoolVar(&get, "g", false, "install necessary tools with go get")
 	flag.BoolVar(&verbose, "v", false, "be verbose")
-	flag.Var(&exclude, "e", "exclude subdirectory (can be specified multiple times)")
+	flag.Var(&exclude, "e", "exclude subdirectory (can be specified repeatedly)")
 }
 
 func fatal(err error) {
