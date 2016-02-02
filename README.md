@@ -1,6 +1,6 @@
 ## gocheck [![Build Status](http://img.shields.io/travis/frankbraun/gocheck.svg?style=flat-square)](https://travis-ci.org/frankbraun/gocheck)
 
-gocheck checks Go source code by running common source code checker and
+gocheck checks Go source code by running common source code checkers and
 executing unit tests. It executes the following checkers:
 
 ```
@@ -34,7 +34,7 @@ usage: gocheck [flags] [path ...]
 
 ### Integration into Travis
 
-A typical `.travis.yml` file for gocheck looks like this:
+A typical `.travis.yml` file for gocheck integration into Travis looks like this:
 
 ```
 language: go
@@ -43,5 +43,5 @@ env: GO15VENDOREXPERIMENT=1
 before_install:
   - go get github.com/frankbraun/gocheck
 script:
-  - gocheck -g -c -e vendor
+  - gocheck -g -c
 ```
