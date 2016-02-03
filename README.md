@@ -1,4 +1,4 @@
-## gocheck [![Build Status](http://img.shields.io/travis/frankbraun/gocheck.svg?style=flat-square)](https://travis-ci.org/frankbraun/gocheck)
+## gocheck [![Build Status](https://img.shields.io/travis/frankbraun/gocheck.svg?style=flat-square)](https://travis-ci.org/frankbraun/gocheck) [![License](https://img.shields.io/badge/license-ISC-brightgreen.svg?style=flat-square)](https://github.com/frankbraun/gocheck/blob/master/LICENSE)
 
 gocheck checks Go source code by running common source code checkers and
 executing unit tests. It executes the following checkers:
