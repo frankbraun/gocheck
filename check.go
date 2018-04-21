@@ -108,10 +108,7 @@ func checkFiles(files []string, verbose bool) error {
 	if err := golint(files, verbose); err != nil {
 		return err
 	}
-	if err := gotoolvet(files, verbose); err != nil {
-		return err
-	}
-	return nil
+	return gotoolvet(files, verbose)
 }
 
 func checkSubdir(subdir string, verbose bool) error {
@@ -125,10 +122,7 @@ func checkSubdir(subdir string, verbose bool) error {
 	if err := golint(path, verbose); err != nil {
 		return err
 	}
-	if err := gotoolvet(path, verbose); err != nil {
-		return err
-	}
-	return nil
+	return gotoolvet(path, verbose)
 }
 
 func getTestDirs(path string, excludeMap map[string]struct{}) ([]string, error) {
