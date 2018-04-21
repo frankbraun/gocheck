@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -51,10 +52,23 @@ func gofmt(paths []string, verbose bool) error {
 }
 
 func golint(paths []string, verbose bool) error {
-	if verbose {
-		fmt.Println("golint", strings.Join(paths, " "))
+	var pathsWithSubDirs []string
+	for _, path := range paths {
+		fi, err := os.Stat(path)
+		if err != nil {
+			return err
+		}
+		if fi.IsDir() {
+			pathsWithSubDirs = append(pathsWithSubDirs, filepath.Join(path, "..."))
+		} else {
+			pathsWithSubDirs = append(pathsWithSubDirs, path)
+		}
+
 	}
-	cmd := exec.Command("golint", paths...)
+	if verbose {
+		fmt.Println("golint", strings.Join(pathsWithSubDirs, " "))
+	}
+	cmd := exec.Command("golint", pathsWithSubDirs...)
 	var outbuf bytes.Buffer
 	cmd.Stdout = &outbuf
 	cmd.Stderr = os.Stderr
