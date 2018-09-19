@@ -40,7 +40,7 @@ A typical `.travis.yml` file for gocheck integration into Travis looks like this
 
 ```
 language: go
-go: 1.8
+go: 1.11
 before_install:
   - go get github.com/frankbraun/gocheck
 script:
