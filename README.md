@@ -9,7 +9,7 @@ executing unit tests. It executes the following checkers:
 goimports -l -w
 gofmt -l -w -s
 golint
-go tool vet
+go vet
 ```
 
 gocheck also executes `go test` in all subdirectories which contain test files.
