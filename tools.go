@@ -81,18 +81,18 @@ func golint(paths []string, verbose bool) error {
 	return nil
 }
 
-func gotoolvet(paths []string, verbose bool) error {
+func govet(paths []string, verbose bool) error {
 	if verbose {
-		fmt.Println("go tool vet", strings.Join(paths, " "))
+		fmt.Println("go vet", strings.Join(paths, " "))
 	}
-	args := []string{"tool", "vet"}
+	args := []string{"vet"}
 	args = append(args, paths...)
 	cmd := exec.Command("go", args...)
 	var errbuf bytes.Buffer
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = &errbuf
 	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("%s: go tool vet:\n%s", err,
+		return fmt.Errorf("%s: go vet:\n%s", err,
 			strings.TrimSpace(errbuf.String()))
 	}
 	return nil
