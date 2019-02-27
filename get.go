@@ -8,8 +8,8 @@ import (
 )
 
 var toolPaths = []string{
+	"golang.org/x/lint/golint",
 	"golang.org/x/tools/cmd/goimports",
-	"github.com/golang/lint/golint",
 }
 
 func getTools(verbose bool) error {
