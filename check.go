@@ -31,6 +31,9 @@ func check(paths, exclude []string, coverage, verbose bool) error {
 				return err
 			}
 			testDirs = append(testDirs, td...)
+			if err := govet([]string{path}, verbose); err != nil {
+				return err
+			}
 		default:
 			files = append(files, path)
 			if strings.HasSuffix(path, "_test.go") {
@@ -105,10 +108,7 @@ func checkFiles(files []string, verbose bool) error {
 	if err := gofmt(files, verbose); err != nil {
 		return err
 	}
-	if err := golint(files, verbose); err != nil {
-		return err
-	}
-	return govet(files, verbose)
+	return golint(files, verbose)
 }
 
 func checkSubdir(subdir string, verbose bool) error {
@@ -119,10 +119,7 @@ func checkSubdir(subdir string, verbose bool) error {
 	if err := gofmt(path, verbose); err != nil {
 		return err
 	}
-	if err := golint(path, verbose); err != nil {
-		return err
-	}
-	return govet(path, verbose)
+	return golint(path, verbose)
 }
 
 func getTestDirs(path string, excludeMap map[string]struct{}) ([]string, error) {
