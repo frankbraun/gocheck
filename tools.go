@@ -103,6 +103,9 @@ func gotest(path string, coverage, verbose bool) error {
 	if coverage {
 		args = append(args, "-cover")
 	}
+	if verbose {
+		args = append(args, "-v")
+	}
 	args = append(args, path)
 	if verbose {
 		fmt.Println("go", strings.Join(args, " "))
