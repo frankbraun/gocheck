@@ -106,6 +106,9 @@ func gotest(path string, coverage, verbose bool) error {
 	if verbose {
 		args = append(args, "-v")
 	}
+	if timeout != defaultTimeout {
+		args = append(args, "-timeout", timeout.String())
+	}
 	args = append(args, path)
 	if verbose {
 		fmt.Println("go", strings.Join(args, " "))

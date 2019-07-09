@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 )
 
 var (
@@ -11,7 +12,10 @@ var (
 	get      bool
 	verbose  bool
 	exclude  excludePaths
+	timeout  time.Duration
 )
+
+const defaultTimeout = 10 * time.Minute
 
 type excludePaths []string
 
@@ -23,6 +27,7 @@ func init() {
 	flag.BoolVar(&coverage, "c", false, "enable coverage analysis")
 	flag.BoolVar(&get, "g", false, "install necessary tools with go get")
 	flag.BoolVar(&verbose, "v", false, "be verbose")
+	flag.DurationVar(&timeout, "timeout", defaultTimeout, "timeout for go test")
 	flag.Var(&exclude, "e", "exclude subdirectory (can be specified repeatedly)")
 }
 
