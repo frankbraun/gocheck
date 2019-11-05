@@ -31,7 +31,11 @@ func check(paths, exclude []string, coverage, verbose bool) error {
 				return err
 			}
 			testDirs = append(testDirs, td...)
-			if err := govet([]string{path}, verbose); err != nil {
+			patharg := []string{path}
+			if path == "." {
+				patharg = []string{"./..."}
+			}
+			if err := govet(patharg, verbose); err != nil {
 				return err
 			}
 		default:
