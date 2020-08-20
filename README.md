@@ -26,11 +26,15 @@ go get github.com/frankbraun/gocheck
 
 ```
 usage: gocheck [flags] [path ...]
-  -c    enable coverage analysis
+  -c	enable coverage analysis
   -e value
-        exclude subdirectory (can be specified repeatedly) (default [vendor])
-  -g    install necessary tools with go get
-  -v    be verbose
+    	exclude subdirectory (can be specified repeatedly) (default [vendor])
+  -g	install necessary tools with go get
+  -novet
+    	disable go vet
+  -timeout duration
+    	timeout for go test (default 10m0s)
+  -v	be verbose
 ```
 
 

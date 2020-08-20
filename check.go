@@ -35,8 +35,10 @@ func check(paths, exclude []string, coverage, verbose bool) error {
 			if path == "." {
 				patharg = []string{"./..."}
 			}
-			if err := govet(patharg, verbose); err != nil {
-				return err
+			if !novet {
+				if err := govet(patharg, verbose); err != nil {
+					return err
+				}
 			}
 		default:
 			files = append(files, path)

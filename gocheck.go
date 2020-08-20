@@ -13,6 +13,7 @@ var (
 	verbose  bool
 	exclude  excludePaths
 	timeout  time.Duration
+	novet    bool
 )
 
 const defaultTimeout = 10 * time.Minute
@@ -29,6 +30,7 @@ func init() {
 	flag.BoolVar(&verbose, "v", false, "be verbose")
 	flag.DurationVar(&timeout, "timeout", defaultTimeout, "timeout for go test")
 	flag.Var(&exclude, "e", "exclude subdirectory (can be specified repeatedly)")
+	flag.BoolVar(&novet, "novet", false, "disable go vet")
 }
 
 func fatal(err error) {
